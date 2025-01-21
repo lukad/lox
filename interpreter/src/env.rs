@@ -85,30 +85,4 @@ impl<'a> Env<'a> {
             }
         }
     }
-
-    pub(crate) fn push(&mut self) {
-        let parent = std::mem::replace(self, Self::new());
-        self.parent = Some(Rc::new(RefCell::new(parent)));
-    }
-
-    pub(crate) fn pop(&mut self) {
-        if let Some(parent) = self.parent.take() {
-            *self = parent.borrow().clone();
-            return;
-        }
-
-        panic!("No parent environment to pop");
-    }
-
-    pub(crate) fn debug_env(
-        &self,
-    ) -> (
-        HashMap<String, Value<'a>>,
-        Option<HashMap<String, Value<'a>>>,
-    ) {
-        (
-            self.vars.clone(),
-            self.parent.as_ref().map(|p| p.borrow().vars.clone()),
-        )
-    }
 }
