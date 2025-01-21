@@ -1,0 +1,10 @@
+[package]
+name = "lox_interpreter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+lox_ast = { path = "../ast" }
+lox_parser = { path = "../parser" }
+multipeek = "0.1.2"
+thiserror = "2"

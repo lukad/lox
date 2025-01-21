@@ -1,0 +1,69 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'lox_ast'",
+      "cargo": {
+        "args": ["test", "--no-run", "--lib", "--package=lox_ast"],
+        "filter": {
+          "name": "lox_ast",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'lox_interpreter'",
+      "cargo": {
+        "args": ["build", "--bin=lox_interpreter", "--package=lox_interpreter"],
+        "filter": {
+          "name": "lox_interpreter",
+          "kind": "bin"
+        }
+      },
+      "args": ["programs/scopes.lox"],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'lox_interpreter'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=lox_interpreter",
+          "--package=lox_interpreter"
+        ],
+        "filter": {
+          "name": "lox_interpreter",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'lox_parser'",
+      "cargo": {
+        "args": ["test", "--no-run", "--lib", "--package=lox_parser"],
+        "filter": {
+          "name": "lox_parser",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
